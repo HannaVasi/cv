@@ -208,13 +208,7 @@ const ManualProjectForm: React.FC<ManualProjectFormProps> = ({
               >
                 <Info size={13} className="flex-shrink-0 mt-0.5" style={{ color: "#F5A623" }} />
                 <span>
-                  A project with this name exists in the catalog. Did you mean to select it?{" "}
-                  <button
-                    className="underline font-medium hover:no-underline"
-                    style={{ color: "#D97706" }}
-                  >
-                    View catalog entry
-                  </button>
+                  Note: A project with this name exists in the central catalog.
                 </span>
               </div>
             )}
