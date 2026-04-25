@@ -53,7 +53,19 @@ const ManualProjectForm: React.FC<ManualProjectFormProps> = ({
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
-  // Catalog conflict detection with debounce
+  const checkCatalogMatch = (name: string) => {
+    const trimmed = name.trim().toLowerCase();
+    if (!trimmed) {
+      setCatalogConflict(false);
+      return;
+    }
+    const match = CATALOG_PROJECTS.some(
+      (p) => p.trim().toLowerCase() === trimmed
+    );
+    setCatalogConflict(match);
+  };
+
+  // Catalog conflict detection with debounce on typing
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
     if (!projectName.trim()) {
@@ -61,16 +73,18 @@ const ManualProjectForm: React.FC<ManualProjectFormProps> = ({
       return;
     }
     debounceRef.current = setTimeout(() => {
-      const match = CATALOG_PROJECTS.some((p) =>
-        p.toLowerCase().includes(projectName.toLowerCase()) ||
-        projectName.toLowerCase().includes(p.toLowerCase().substring(0, 5))
-      );
-      setCatalogConflict(match && projectName.length > 3);
+      checkCatalogMatch(projectName);
     }, 500);
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
   }, [projectName]);
+
+  // Also check on blur
+  const handleProjectNameBlur = () => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    checkCatalogMatch(projectName);
+  };
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -188,6 +202,7 @@ const ManualProjectForm: React.FC<ManualProjectFormProps> = ({
                 setProjectName(e.target.value);
                 if (errors.projectName) setErrors((p) => ({ ...p, projectName: undefined }));
               }}
+              onBlur={handleProjectNameBlur}
               className={inputClass(!!errors.projectName)}
             />
             {errors.projectName && (
