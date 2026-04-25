@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { X, Info, Calendar, Maximize2, AlertCircle } from "lucide-react";
+import { X, Info, Calendar, Maximize2, CircleAlert as AlertCircle } from "lucide-react";
 import { Project, FormErrors, FormMode } from "./types";
 
 const CATALOG_PROJECTS = [
-  "EliNext",
-  "EliNext.Payroll Management",
-  "Eli eCommerce",
-  "EliNext Healthcare",
-  "EliNext CRM",
+  "Nexa",
+  "Nexa.Payroll Management",
+  "Nexa Commerce",
+  "Nexa Healthcare",
+  "Nexa CRM",
 ];
 
 interface ManualProjectFormProps {

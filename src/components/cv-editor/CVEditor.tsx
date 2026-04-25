@@ -9,7 +9,7 @@ import { Project } from "./types";
 const INITIAL_PROJECTS: Project[] = [
   {
     id: "1",
-    projectName: "EliNext",
+    projectName: "Nexa",
     startDate: "2023-11",
     endDate: undefined,
     untilNow: true,
@@ -34,7 +34,7 @@ const INITIAL_PROJECTS: Project[] = [
   },
   {
     id: "3",
-    projectName: "EliNext.Payroll Management",
+    projectName: "Nexa.Payroll Management",
     startDate: "2023-11",
     endDate: "2024-01",
     untilNow: false,
@@ -46,7 +46,7 @@ const INITIAL_PROJECTS: Project[] = [
   },
   {
     id: "4",
-    projectName: "Eli eCommerce",
+    projectName: "Nexa Commerce",
     startDate: "2023-11",
     endDate: undefined,
     untilNow: true,

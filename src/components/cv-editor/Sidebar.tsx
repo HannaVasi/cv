@@ -34,7 +34,7 @@ const Sidebar: React.FC = () => {
           className="text-white font-bold text-lg tracking-tight"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
-          eliNEXt
+          nexaNEXT
         </span>
       </div>
 
